@@ -6,7 +6,7 @@
  * @env: number of values received from the command line
  * Return: zero on succes.
  */
-int main(int argc, char *argv[], char *env[])
+int _main(int argc, char *argv[], char *env[])
 {
 	data_of_program data_struct = {NULL}, *data = &data_struct;
 	char *prompt = "";
@@ -96,7 +96,7 @@ void sisifo(char *prompt, data_of_program *data)
 		while (++(data->exec_counter))
 		{
 			_print(prompt);
-			error_code = string_len = _getline(data);
+			error_code = string_len;
 
 			if (error_code == EOF)
 			{
@@ -131,7 +131,7 @@ void sisifo(char *prompt, data_of_program *data)
 	
 	asm ("mov %1, %0\n\t"
 			"add $3, %0"
-			: "=r" (fd)
+			: "r" (fd);
 			: "r" (fd));
 	if (ac == 2)
 	{
@@ -147,14 +147,16 @@ void sisifo(char *prompt, data_of_program *data)
 				_eputs(av[1]);
 				_eputchar('\n');
 				_eputchar(BUF_FLUSH);
-				exit(127;
-						}
+				exit(127);
+			}
+			
 						return (EXIT_FAILURE);
-						}
+		}
 						info->readfd = fd;
-						}
+	}
 						populate_env_list(info);
-						read_history(info)
+						read_history(info);
 						hsh(info, av);
 						return (EXIT_SUCCESS);
+
 }
